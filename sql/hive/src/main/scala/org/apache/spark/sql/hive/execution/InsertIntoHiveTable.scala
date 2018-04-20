@@ -210,9 +210,10 @@ case class InsertIntoHiveTable(
       path: Path,
       hadoopConf: Configuration,
       stagingDir: String): Path = {
-    val extURI: URI = path.toUri
+    val tmpPath = getTmpForViewfs(path)
+    val extURI: URI = tmpPath.toUri
     if (extURI.getScheme == "viewfs") {
-      getExtTmpPathRelTo(path.getParent, hadoopConf, stagingDir)
+      getExtTmpPathRelTo(tmpPath.getParent, hadoopConf, stagingDir)
     } else {
       new Path(getExternalScratchDir(extURI, hadoopConf, stagingDir), "-ext-10000")
     }
@@ -223,6 +224,23 @@ case class InsertIntoHiveTable(
       hadoopConf: Configuration,
       stagingDir: String): Path = {
     new Path(getStagingDir(path, hadoopConf, stagingDir), "-ext-10000") // Hive uses 10000
+  }
+
+  /**
+    * Get separated tmp path for viewfs system, to solve hive-hdfs 755 644 problem
+    * @param path
+    * @return
+    */
+  def getTmpForViewfs(path: Path): Path = {
+    if (null == path || path.isRoot) {
+      return path
+    }
+    var parent: Path = path
+    while (!parent.getParent.isRoot) {
+      parent = parent.getParent
+    }
+    new Path(parent, "hive_tmp")
+
   }
 
   /**

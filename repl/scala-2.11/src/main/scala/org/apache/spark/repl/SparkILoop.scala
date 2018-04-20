@@ -77,7 +77,7 @@ class SparkILoop(in0: Option[BufferedReader], out: JPrintWriter)
          |  / __/__  ___ _____/ /__    / ___/_  __/ ___/ ___/
          | _\ \/ _ \/ _ `/ __/  '_/   /__  / / / /__/ /__
          |/___/ .__/\_,_/_/ /_/\_\    \___/ /_/  \___/\___/  version %s
-         |   /_/                -- wangxiaogang@chinatelecom;wangchao@chinatelecom.cn
+         |   /_/                -- wangxiaogang@chinatelecom;
          """.format(SPARK_VERSION))
     val welcomeMsg = "Using Scala %s (%s, Java %s)".format(
       versionString, javaVmName, javaVersion)
