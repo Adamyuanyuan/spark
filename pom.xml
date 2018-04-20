@@ -231,6 +231,17 @@
         <enabled>false</enabled>
       </snapshots>
     </repository>
+    <repository>
+      <id>cloudera-repo</id>
+      <name>Cloudera Repository</name>
+      <url>https://repository.cloudera.com/artifactory/cloudera-repos</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
   </repositories>
   <pluginRepositories>
     <pluginRepository>
@@ -2483,6 +2494,14 @@
         </dependency>
       </dependencies>
     </profile>
+      <profile>
+          <id>cdh5.4.7</id>
+          <properties>
+              <hadoop.version>2.6.0-cdh5.4.7</hadoop.version>
+              <hbase.version>1.2.4-cdh5.4.7</hbase.version>
+              <zookeeper.version>3.4.5-cdh5.4.7</zookeeper.version>
+          </properties>
+      </profile>
 
     <!-- Ganglia integration is not included by default due to LGPL-licensed code -->
     <profile>

@@ -73,11 +73,11 @@ class SparkILoop(in0: Option[BufferedReader], out: JPrintWriter)
   override def printWelcome() {
     import org.apache.spark.SPARK_VERSION
     echo("""Welcome to
-      ____              __
-     / __/__  ___ _____/ /__
-    _\ \/ _ \/ _ `/ __/  '_/
-   /___/ .__/\_,_/_/ /_/\_\   version %s
-      /_/
+         |   ____              __       _____ _____ ____ ____
+         |  / __/__  ___ _____/ /__    / ___/_  __/ ___/ ___/
+         | _\ \/ _ \/ _ `/ __/  '_/   /__  / / / /__/ /__
+         |/___/ .__/\_,_/_/ /_/\_\    \___/ /_/  \___/\___/  version %s
+         |   /_/                -- wangxiaogang@chinatelecom;wangchao@chinatelecom.cn
          """.format(SPARK_VERSION))
     val welcomeMsg = "Using Scala %s (%s, Java %s)".format(
       versionString, javaVmName, javaVersion)
